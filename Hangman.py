@@ -1,10 +1,19 @@
+import re
+
 def guess(guess, word, lim):
     
     return word.find(guess,lim,len(word))
         
 def setWord():
     word = input("What word should your opponent guess?")
-    
+    allowed = True
+    while allowed:
+        if not re.match("^[a-z]*$",word):
+            word = input( "Only letters a-z allowed! ")
+        else:
+            allowed = False
+        
+        
     word = " " + word 
     return word.capitalize()
 def pos1():
@@ -100,8 +109,15 @@ def game():
     pos = 1
         
     while tries>0:
-        
+        print("Used letters:" + used)
         guessed = input("Letter? ")
+        allow = True
+        while allow:
+            if not re.match("^[a-z]*$",guessed):
+                guessed = input( "Only letters a-z allowed! ")
+            else:
+                allow = False
+        
         while len(guessed) != 1:
             guessed = input("Please input a valid letter ")
         while pos < len(word):
@@ -126,7 +142,7 @@ def game():
            
            used = used + " " + guessed
            print("You've got " + str(tries) + " tries left")
-           print("Used letters:" + used)
+           
 
     print("         ")
     print("                                      GAME OVER !!!")     
