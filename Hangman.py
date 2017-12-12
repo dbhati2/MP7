@@ -147,3 +147,4 @@ def game():
     print("         ")
     print("                                      GAME OVER !!!")     
     
+game()
